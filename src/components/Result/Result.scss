@@ -1,3 +1,6 @@
-p {
+.result {
     color: white;
+    &__text {
+        text-align: center;
+    }
 }

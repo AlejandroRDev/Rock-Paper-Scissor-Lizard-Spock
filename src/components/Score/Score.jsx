@@ -3,9 +3,9 @@ import './Score.scss';
 
 const Score = ({ counter }) => {
   return (
-    <div>
-      <h2 className="score">
-        Score: <span>{counter}</span>
+    <div className="score">
+      <h2 className="score__title">
+        Score: <span className="score__title--counter">{counter}</span>
       </h2>
     </div>
   );

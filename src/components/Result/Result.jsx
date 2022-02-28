@@ -5,9 +5,9 @@ const Result = (props) => {
 
 
   return (
-    <div>
-    <p>{props.result}</p>
-    <p>{props.winner}</p>
+    <div className="result">
+    <p className="result__text">{props.result}</p>
+    <p className="result__text">{props.winner}</p>
     </div>
   )
 }
