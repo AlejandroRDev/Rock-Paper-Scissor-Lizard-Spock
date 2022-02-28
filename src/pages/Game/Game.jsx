@@ -21,79 +21,64 @@ export default function Game(props) {
     return number;
   };
 
-  function handleMachineMove(){
+  function handleMachineMove() {
     machineChoice = randomNumber(0, 4);
     while (lastMachineMove === options[machineChoice]) {
       handleMachineMove();
     }
     setMachineMove(options[machineChoice]);
     setLastMachineMove(options[machineChoice]);
-  };
+  }
 
-  function handlePlayerMove(playerWeapon){
+  function handlePlayerMove(playerWeapon) {
     setPlayerMove(playerWeapon);
     return playerWeapon;
-   
-  };
+  }
 
   function battle(playerWeapon) {
     console.log(playerMove, machineMove);
+
     if (playerWeapon === options[machineChoice]) {
+      props.updatePlayer(win);
       setWinner("It's a tie");
-    } else if (playerWeapon === "Rock") {
-      if (options[machineChoice] === "Scissors" || options[machineChoice] === "Lizard") {
-        setWin(win + 1);
-        setWinner("You win");
-      }
-    } else if (playerWeapon === "Paper") {
-      if (options[machineChoice] === "Rock" || options[machineChoice] === "Spock") {
-        setWin(win + 1);
-        setWinner("You win");
-      }
-    } else if (playerWeapon === "Scissors") {
-      if (options[machineChoice] === "Paper" || options[machineChoice] === "Lizard") {
-        setWin(win + 1);
-        setWinner("You win");
-      }
-    } else if (playerWeapon === "Lizard") {
-      if (options[machineChoice] === "Paper" || options[machineChoice] === "Spock") {
-        setWin(win + 1);
-        setWinner("You win");
-      }
-    } else if (playerWeapon === "Spock") {
-      if (options[machineChoice] === "Rock" || options[machineChoice] === "Scissors") {
-        setWin(win + 1);
-        setWinner("You win");
-      }
+    } else if (
+      (playerWeapon === "Rock" &&
+        (options[machineChoice] === "Scissors" || options[machineChoice] === "Lizard")) ||
+      (playerWeapon === "Lizard" &&
+        (options[machineChoice] === "Spock" || options[machineChoice] === "Paper")) ||
+      (playerWeapon === "Spock" &&
+        (options[machineChoice] === "Scissors" || options[machineChoice] === "Rock")) ||
+      (playerWeapon === "Paper" &&
+        (options[machineChoice] === "Rock" || options[machineChoice] === "Spock")) ||
+      (playerWeapon === "Scissors" &&
+        (options[machineChoice] === "Paper" || options[machineChoice] === "Lizard"))
+    ) {
+      setWin(win + 1);
+      setWinner ("You win");
+      props.updatePlayer(win);
     } else {
-      setLose(lose + 1);
+      props.updatePlayer(win);
       setWinner("Machine wins");
     }
-    props.updatePlayer(win);
-  };
+    
+  }
 
-
-
-  function showBattle(choice) {  
-      handlePlayerMove(choice);
-      handleMachineMove();
-      setResult(`You : ${choice} VS thinking... : Machine`)
-      setTimeout(() => {
-        battle(choice);
-        setResult(`You : ${choice} VS ${options[machineChoice]} : Machine`);      
-    }, 1000)
-     
-  };
+  function showBattle(choice) {
+    handlePlayerMove(choice);
+    handleMachineMove();
+    setResult(`You : ${choice} VS thinking... : Machine`);
+    setTimeout(() => {
+      battle(choice);
+      setResult(`You : ${choice} VS ${options[machineChoice]} : Machine`);
+    }, 1000);
+  }
 
   return (
     <div className="game">
       <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} />
       <div className="game__container">
         <Score counter={win} />
-        <Result
-          winner={winner}
-          result={result}
-        />
+        <Result winner={winner} result={result} />
         <BtnGroup
           playerMove={playerMove}
           machineMove={machineMove}
@@ -102,6 +87,4 @@ export default function Game(props) {
       </div>
     </div>
   );
-};
-
-
+}
