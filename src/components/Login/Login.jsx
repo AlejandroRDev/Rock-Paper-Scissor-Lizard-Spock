@@ -2,6 +2,8 @@ import React from "react";
 import "./Login.scss";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor"
@@ -33,9 +35,9 @@ export default function LoginPage({ playerName, setPlayerName, welcomeMsg }) {
         onChange={(e) => setPlayerName(e.target.value)}
       />
 
-      <button className="login__btn" onClick={welcomeMsg}>
-        Join
-      </button>
+        <Button style={{backgroundColor: '#673ab7' }}variant="contained" size="large" onClick={() => welcomeMsg()}>
+          Join
+        </Button>
     </div>
   );
 }
