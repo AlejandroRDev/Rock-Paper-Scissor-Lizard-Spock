@@ -5,23 +5,23 @@ import Score from "../../components/Score/Score";
 import Header from "../../components/Header/Header";
 import "./Game.scss";
 
-const Game = (props) => {
+export default function Game(props) {
   let options = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
   let machineChoice;
   const [lastMachineMove, setLastMachineMove] = useState("");
   const [machineMove, setMachineMove] = useState("");
   const [playerMove, setPlayerMove] = useState("");
-  const [winner, setWinner] = useState("");
+  const [winner, setWinner] = useState("Hola");
   const [win, setWin] = useState(0);
   const [lose, setLose] = useState(0);
-  const [handler, setHandler] = useState(false);
+  const [result, setResult] = useState(`You : ... Vs ... : Machine`);
 
   const randomNumber = (min, max) => {
     let number = Math.floor(Math.random() * (max - min + 1) + min);
     return number;
   };
 
-  const handleMachineMove = () => {
+  function handleMachineMove(){
     machineChoice = randomNumber(0, 4);
     while (lastMachineMove === options[machineChoice]) {
       handleMachineMove();
@@ -30,13 +30,13 @@ const Game = (props) => {
     setLastMachineMove(options[machineChoice]);
   };
 
-  const handlePlayerMove =  (playerWeapon) => {
+  function handlePlayerMove(playerWeapon){
     setPlayerMove(playerWeapon);
     return playerWeapon;
    
   };
 
-  const battle = (playerWeapon) => {
+  function battle(playerWeapon) {
     console.log(playerMove, machineMove);
     if (playerWeapon === options[machineChoice]) {
       setWinner("It's a tie");
@@ -74,14 +74,15 @@ const Game = (props) => {
 
 
 
-  const showBattle = (choice) => {
-    if (handler === false) {
-      setHandler(true);
+  function showBattle(choice) {  
       handlePlayerMove(choice);
       handleMachineMove();
-      battle(choice);
-      setHandler(false);
-    }
+      setResult(`You : ${choice} VS thinking... : Machine`)
+      setTimeout(() => {
+        battle(choice);
+        setResult(`You : ${choice} VS ${options[machineChoice]} : Machine`);      
+    }, 1000)
+     
   };
 
   return (
@@ -91,9 +92,7 @@ const Game = (props) => {
         <Score counter={win} />
         <Result
           winner={winner}
-          updatePlayer={props.updatePlayer}
-          playerMove={playerMove}
-          machineMove={machineMove}
+          result={result}
         />
         <BtnGroup
           playerMove={playerMove}
@@ -105,4 +104,4 @@ const Game = (props) => {
   );
 };
 
-export default Game;
+
