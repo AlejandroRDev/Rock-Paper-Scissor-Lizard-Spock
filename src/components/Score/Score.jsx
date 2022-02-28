@@ -5,7 +5,7 @@ const Score = ({ counter }) => {
   return (
     <div className="score">
       <h2 className="score__title">
-        Score: <span className="score__title--counter">{counter}</span>
+        Score : <span className="score__title--counter">{counter}</span>
       </h2>
     </div>
   );

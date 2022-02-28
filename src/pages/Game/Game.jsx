@@ -5,16 +5,16 @@ import Score from "../../components/Score/Score";
 import Header from "../../components/Header/Header";
 import "./Game.scss";
 
-export default function Game(props) {
+const Game = (props) => {
   let options = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
   let machineChoice;
   const [lastMachineMove, setLastMachineMove] = useState("");
   const [machineMove, setMachineMove] = useState("");
   const [playerMove, setPlayerMove] = useState("");
-  const [winner, setWinner] = useState("Hola");
+  const [winner, setWinner] = useState("");
   const [win, setWin] = useState(0);
   const [lose, setLose] = useState(0);
-  const [result, setResult] = useState(`You : ... Vs ... : Machine`);
+  const [result, setResult] = useState(`You : ... VS ... : IA`);
 
   const randomNumber = (min, max) => {
     let number = Math.floor(Math.random() * (max - min + 1) + min);
@@ -66,10 +66,10 @@ export default function Game(props) {
   function showBattle(choice) {
     handlePlayerMove(choice);
     handleMachineMove();
-    setResult(`You : ${choice} VS thinking... : Machine`);
+    setResult(`You : ${choice} VS thinking... : IA`);
     setTimeout(() => {
       battle(choice);
-      setResult(`You : ${choice} VS ${options[machineChoice]} : Machine`);
+      setResult(`You : ${choice} VS ${options[machineChoice]} : IA`);
     }, 1000);
   }
 
@@ -88,3 +88,5 @@ export default function Game(props) {
     </div>
   );
 }
+
+export default Game;
