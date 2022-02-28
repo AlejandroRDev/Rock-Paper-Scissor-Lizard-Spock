@@ -27,8 +27,8 @@ const Home = (props) => {
         welcomeMsg={welcomeMsg}
       />
       <div className="home__imgContainer">
-      <img className="home__imgContainer--img" src="./assets/images/home.png" alt="piedra papel tijera lagarto spock"/>
-      </div>
+{/*       <img className="home__imgContainer--img" src="./assets/images/home.png" alt="piedra papel tijera lagarto spock"/>
+ */}      </div>
     </div>
   );
 };
