@@ -15,7 +15,7 @@
 - Create client's components.
 - Set the players at localstorage.
 - Get the players data.
-<!-- - Deployment in Vercel: []() -->
+- Deployment in Vercel: [https://rock-paper-scissor-lizard-spock.vercel.app/](https://rock-paper-scissor-lizard-spock.vercel.app/)
 
 ### Use
 

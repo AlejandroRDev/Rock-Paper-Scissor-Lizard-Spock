@@ -71,7 +71,7 @@ const Game = (props) => {
   }
   
   return (
-    <div className="game">
+    <div className="game" data-testid="Game">
       <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} setRankingToggle={setRankingToggle}/>
       {rakingToggle === false ? (
       <div className="game__container">

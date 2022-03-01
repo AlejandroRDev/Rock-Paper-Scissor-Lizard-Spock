@@ -14,7 +14,7 @@ const Home = (props) => {
   };
 
   return (
-    <div className="home">
+    <div className="home" data-testid="Home">
       <LoginPage
         playerName={props.playerName}
         gotPlayer={gotPlayer}
