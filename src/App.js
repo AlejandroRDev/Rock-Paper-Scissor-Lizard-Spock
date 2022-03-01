@@ -22,8 +22,6 @@ function App() {
         name: playerName,
         gamesPlayed: 0,
         wins: 0,
-        loses: 0,
-        winrate: 0,
       };
       setPlayersData((prevPlayersData) => [newPlayer, ...prevPlayersData]);
       console.log(playersData);
@@ -61,11 +59,10 @@ function App() {
           playerFound={findCurrentPlayer()}
           setPlayerName={setPlayerName}
           createNewPlayer={createNewPlayer}
-          updatePlayer={updatePlayer}
           setLoggedIn={setLoggedIn}
         />
       ) : (
-        <Game 
+        <Game
           playersData={playersData}
           playerFound={findCurrentPlayer()}
           updatePlayer={updatePlayer}

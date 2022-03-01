@@ -10,4 +10,5 @@ const Score = ({ counter }) => {
     </div>
   );
 };
+
 export default Score;

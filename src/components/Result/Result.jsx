@@ -3,7 +3,6 @@ import './Result.scss';
 
 const Result = (props) => {
 
-
   return (
     <div className="result">
     <p className="result__textResult">{props.result}</p>

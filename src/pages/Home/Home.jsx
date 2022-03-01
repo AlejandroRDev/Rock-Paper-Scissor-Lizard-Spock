@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginPage from "../../components/Login/Login";
 import './Home.scss'
+
 const Home = (props) => {
   const [gotPlayer, setGotPlayer] = useState(false);
 

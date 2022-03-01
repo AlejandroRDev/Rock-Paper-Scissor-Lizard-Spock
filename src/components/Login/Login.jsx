@@ -4,21 +4,18 @@ import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 
-
 const CssTextField = styled(TextField, {
-  shouldForwardProp: (props) => props !== "focusColor"
+  shouldForwardProp: (props) => props !== "focusColor",
 })((p) => ({
   "& label.Mui-focused": {
-    color: p.focusColor
+    color: p.focusColor,
   },
   "& .MuiFilledInput-underline:after": {
     borderBottomColor: p.focusColor,
-
   },
-  
 }));
 
-export default function LoginPage({ playerName, setPlayerName, welcomeMsg }) {
+const LoginPage = ({ playerName, setPlayerName, welcomeMsg }) => {
   return (
     <div className="login">
       <div className="login__imgContainer">
@@ -31,13 +28,23 @@ export default function LoginPage({ playerName, setPlayerName, welcomeMsg }) {
         variant="filled"
         focusColor="#673ab7"
         value={playerName}
-        style={{ backgroundColor: "#e0e0e0", borderRadius: '5px', margin: '20px' }}
+        style={{
+          backgroundColor: "#e0e0e0",
+          borderRadius: "5px",
+          margin: "20px",
+        }}
         onChange={(e) => setPlayerName(e.target.value)}
       />
-
-        <Button style={{backgroundColor: '#673ab7' }}variant="contained" size="large" onClick={() => welcomeMsg()}>
-          Join
-        </Button>
+      <Button
+        style={{ backgroundColor: "#673ab7" }}
+        variant="contained"
+        size="large"
+        onClick={() => welcomeMsg()}
+      >
+        Join
+      </Button>
     </div>
   );
 }
+
+export default LoginPage;

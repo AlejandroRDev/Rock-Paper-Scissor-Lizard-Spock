@@ -5,15 +5,14 @@ import "./BtnGroup.scss";
 
 const BtnGroup = (props) => {
   const [disable, setDisable] = useState(false);
-  const [style, setStyle] = useState("#673ab7");
+  
   const disableButton = () => {
     setDisable(true);
-    setStyle("#d93e3a");
     setTimeout(() => {
       setDisable(false);
-      setStyle("#673ab7");
     }, 2000);
   };
+  
   return (
     <div className="btnGroup">
       <ButtonGroup
