@@ -61,7 +61,7 @@ const Game = (props) => {
       setWinner ("You win");
       props.updatePlayer(win);
     } else {
-      props.updatePlayer(win);
+      props.updatePlayer();
       setWinner("Machine wins");
     }
     
@@ -82,7 +82,7 @@ const Game = (props) => {
       <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} setRankingToggle={setRankingToggle}/>
       {rakingToggle === false ? (
       <div className="game__container">
-        <Score counter={win} />
+        <Score playerFound={props.playerFound} />
         <Result winner={winner} result={result} />
         <BtnGroup
           playerMove={playerMove}

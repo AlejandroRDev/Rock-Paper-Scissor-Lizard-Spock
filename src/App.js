@@ -30,7 +30,7 @@ function App() {
     setLoggedIn(true);}
   };
 
-  const updatePlayer = (scoreWin, scoreLose) => {
+  const updatePlayer = (scoreWin) => {
     setPlayersData((prevPlayersData) =>
       prevPlayersData.map((player) => {
         if (player.name === playerName) {
@@ -52,7 +52,7 @@ function App() {
   };
  
   return (
-    <div>
+    <div data-testid="App">
       {loggedIn === false ? (
         <Home
           playersData={playersData}
@@ -64,7 +64,7 @@ function App() {
           setLoggedIn={setLoggedIn}
         />
       ) : (
-        <Game playersData={playersData} updatePlayer={updatePlayer} setLoggedIn={setLoggedIn} playerName={playerName}/>
+        <Game playerFound={findCurrentPlayer()} updatePlayer={updatePlayer} setLoggedIn={setLoggedIn} playerName={playerName}/>
       )}
       </div>
   );
