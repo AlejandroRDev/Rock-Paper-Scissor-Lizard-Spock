@@ -89,7 +89,7 @@ const Game = (props) => {
           machineMove={machineMove}
           showBattle={showBattle}/>
       </div>
-      ) : ( <Ranking />)}
+      ) : ( <Ranking playersData={props.playersData}/>)}
     </div>
   );
 }

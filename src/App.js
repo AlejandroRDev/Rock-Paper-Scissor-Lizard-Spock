@@ -5,7 +5,6 @@ import "./App.scss";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [welcome, setWelcome] = useState("");
   const [playersData, setPlayersData] = React.useState(
     () => JSON.parse(localStorage.getItem("players")) || []
   );
@@ -65,7 +64,7 @@ function App() {
           setLoggedIn={setLoggedIn}
         />
       ) : (
-        <Game updatePlayer={updatePlayer} setLoggedIn={setLoggedIn} playerName={playerName}/>
+        <Game playersData={playersData} updatePlayer={updatePlayer} setLoggedIn={setLoggedIn} playerName={playerName}/>
       )}
       </div>
   );
