@@ -3,6 +3,7 @@ import Result from "../../components/Result/Result";
 import BtnGroup from "../../components/BtnGroup/BtnGroup";
 import Score from "../../components/Score/Score";
 import Header from "../../components/Header/Header";
+import Ranking from "../../components/Ranking/Ranking";
 import "./Game.scss";
 
 const Game = (props) => {
@@ -15,6 +16,9 @@ const Game = (props) => {
   const [win, setWin] = useState(0);
   const [lose, setLose] = useState(0);
   const [result, setResult] = useState(`You : ... VS ... : IA`);
+  const [rakingToggle, setRankingToggle] = useState(false);
+
+ 
 
   const randomNumber = (min, max) => {
     let number = Math.floor(Math.random() * (max - min + 1) + min);
@@ -75,16 +79,17 @@ const Game = (props) => {
 
   return (
     <div className="game">
-      <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} />
+      <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} setRankingToggle={setRankingToggle}/>
+      {rakingToggle === false ? (
       <div className="game__container">
         <Score counter={win} />
         <Result winner={winner} result={result} />
         <BtnGroup
           playerMove={playerMove}
           machineMove={machineMove}
-          showBattle={showBattle}
-        />
+          showBattle={showBattle}/>
       </div>
+      ) : ( <Ranking />)}
     </div>
   );
 }

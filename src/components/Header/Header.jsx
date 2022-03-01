@@ -20,7 +20,7 @@ const Header = (props) => {
   const styles = {
     margin: '20px 0px 0px 20px',
     width: '100px',
-    height: '120px',
+    height: '170px',
     position: 'absolute',
     top: 28,
     right: 0,
@@ -47,7 +47,10 @@ const Header = (props) => {
         </button>
         {open ? (
           <Box sx={styles} >
-          <Button style={{backgroundColor: '#673ab7' }} variant="contained" size="small" onClick={() => props.setLoggedIn(false)}>
+          <Button style={{backgroundColor: '#673ab7' }} variant="contained" size="small" onClick={() => props.setRankingToggle(false)}>
+          Game
+        </Button>
+          <Button style={{backgroundColor: '#673ab7' }} variant="contained" size="small" onClick={() => props.setRankingToggle(true)}>
           Ranking
         </Button>
           <Button style={{backgroundColor: '#673ab7' }} variant="contained" size="small" onClick={() => props.setLoggedIn(false)}>
