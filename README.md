@@ -9,12 +9,13 @@
 ### Client
 
 - Create React app.
-- Install dependencies(MaterialUI, SASS).
+- Install dependencies.
 - Generate and configure Serviceworker.
 - Create client's pages.
 - Create client's components.
 - Set the players at localstorage.
 - Get the players data.
+- Generate units tests
 - Deployment in Vercel: [https://rock-paper-scissor-lizard-spock.vercel.app/](https://rock-paper-scissor-lizard-spock.vercel.app/)
 
 ### Use
