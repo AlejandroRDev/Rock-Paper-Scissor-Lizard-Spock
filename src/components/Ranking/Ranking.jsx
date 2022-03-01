@@ -16,7 +16,7 @@ const Ranking = (props) => {
   mapRanking();
 
   return (
-    <div className="ranking">
+    <div className="ranking" data-testid="Ranking">
       <ul className="ranking__list">
       <li className="ranking__example">
       <h2 className="ranking__player--init">PLAYERS</h2>

@@ -14,7 +14,7 @@ const BtnGroup = (props) => {
   };
   
   return (
-    <div className="btnGroup">
+    <div className="btnGroup" data-testid="BtnGroup">
       <ButtonGroup
         variant="contained"
         aria-label="outlined primary button group"

@@ -17,7 +17,7 @@ const CssTextField = styled(TextField, {
 
 const LoginPage = ({ playerName, setPlayerName, welcomeMsg }) => {
   return (
-    <div className="login">
+    <div className="login" data-testid="Login">
       <div className="login__imgContainer">
         <img src="./assets/images/player.png" alt="player" />
       </div>

@@ -4,7 +4,7 @@ import './Result.scss';
 const Result = (props) => {
 
   return (
-    <div className="result">
+    <div className="result" data-testid="Result" >
     <p className="result__textResult">{props.result}</p>
     <p className="result__textWinner">{props.winner}</p>
     </div>

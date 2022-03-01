@@ -3,7 +3,7 @@ import './Score.scss';
 
 const Score = ({ counter }) => {
   return (
-    <div className="score">
+    <div className="score" data-testid="Score">
       <h2 className="score__title">
         Score : <span className="score__title--counter">{counter}</span>
       </h2>

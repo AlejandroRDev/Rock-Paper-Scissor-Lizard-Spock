@@ -34,7 +34,7 @@ const Header = (props) => {
 
 
   return (
-    <Box sx= {{display: 'flex', justifyContent: "space-between",
+    <Box data-testid='Header' sx= {{display: 'flex', justifyContent: "space-between",
     alignItems: "center",  bgcolor: '#333333', width: '100vw'}}>
     <ClickAwayListener
       mouseEvent="onMouseDown"
