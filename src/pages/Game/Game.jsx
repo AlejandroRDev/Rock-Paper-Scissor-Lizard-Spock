@@ -5,7 +5,6 @@ import Score from "../../components/Score/Score";
 import Header from "../../components/Header/Header";
 import Ranking from "../../components/Ranking/Ranking";
 import "./Game.scss";
-
 const Game = (props) => {
   let options = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
   let machineChoice;
@@ -14,17 +13,15 @@ const Game = (props) => {
   const [playerMove, setPlayerMove] = useState("");
   const [winner, setWinner] = useState("");
   const [win, setWin] = useState(0);
-  const [lose, setLose] = useState(0);
   const [result, setResult] = useState(`You : ... VS ... : IA`);
   const [rakingToggle, setRankingToggle] = useState(false);
-
  
+  
 
   const randomNumber = (min, max) => {
     let number = Math.floor(Math.random() * (max - min + 1) + min);
     return number;
   };
-
   function handleMachineMove() {
     machineChoice = randomNumber(0, 4);
     while (lastMachineMove === options[machineChoice]) {
@@ -33,17 +30,14 @@ const Game = (props) => {
     setMachineMove(options[machineChoice]);
     setLastMachineMove(options[machineChoice]);
   }
-
   function handlePlayerMove(playerWeapon) {
     setPlayerMove(playerWeapon);
     return playerWeapon;
   }
-
   function battle(playerWeapon) {
     console.log(playerMove, machineMove);
-
     if (playerWeapon === options[machineChoice]) {
-      props.updatePlayer(win);
+      props.updatePlayer();
       setWinner("It's a tie");
     } else if (
       (playerWeapon === "Rock" &&
@@ -57,14 +51,12 @@ const Game = (props) => {
       (playerWeapon === "Scissors" &&
         (options[machineChoice] === "Paper" || options[machineChoice] === "Lizard"))
     ) {
-      setWin(win + 1);
       setWinner ("You win");
-      props.updatePlayer(win);
+      props.updatePlayer(props.playerFound.wins + 1);
     } else {
       props.updatePlayer();
       setWinner("Machine wins");
     }
-    
   }
 
   function showBattle(choice) {
@@ -76,13 +68,12 @@ const Game = (props) => {
       setResult(`You : ${choice} VS ${options[machineChoice]} : IA`);
     }, 1000);
   }
-
   return (
     <div className="game">
       <Header playerName={props.playerName} setLoggedIn={props.setLoggedIn} setRankingToggle={setRankingToggle}/>
       {rakingToggle === false ? (
       <div className="game__container">
-        <Score playerFound={props.playerFound} />
+        <Score counter={props.playerFound.wins} />
         <Result winner={winner} result={result} />
         <BtnGroup
           playerMove={playerMove}
@@ -93,5 +84,4 @@ const Game = (props) => {
     </div>
   );
 }
-
 export default Game;

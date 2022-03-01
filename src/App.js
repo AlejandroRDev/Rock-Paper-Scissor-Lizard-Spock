@@ -15,19 +15,20 @@ function App() {
   }, [playersData]);
 
   const createNewPlayer = () => {
-    if(playerName.length === 0 ) {
-          return
-    } else{
-    const newPlayer = {
-      name: playerName,
-      gamesPlayed: 0,
-      wins: 0,
-      loses: 0,
-      winrate: 0,
-    };
-    setPlayersData((prevPlayersData) => [newPlayer, ...prevPlayersData]);
-    console.log(playersData);
-    setLoggedIn(true);}
+    if (playerName.length === 0) {
+      return;
+    } else {
+      const newPlayer = {
+        name: playerName,
+        gamesPlayed: 0,
+        wins: 0,
+        loses: 0,
+        winrate: 0,
+      };
+      setPlayersData((prevPlayersData) => [newPlayer, ...prevPlayersData]);
+      console.log(playersData);
+      setLoggedIn(true);
+    }
   };
 
   const updatePlayer = (scoreWin) => {
@@ -50,7 +51,7 @@ function App() {
     const data = playersData.find((item) => item.name === playerName);
     return data;
   };
- 
+
   return (
     <div data-testid="App">
       {loggedIn === false ? (
@@ -64,9 +65,15 @@ function App() {
           setLoggedIn={setLoggedIn}
         />
       ) : (
-        <Game playerFound={findCurrentPlayer()} updatePlayer={updatePlayer} setLoggedIn={setLoggedIn} playerName={playerName}/>
+        <Game 
+          playersData={playersData}
+          playerFound={findCurrentPlayer()}
+          updatePlayer={updatePlayer}
+          setLoggedIn={setLoggedIn}
+          playerName={playerName}
+        />
       )}
-      </div>
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ const Ranking = (props) => {
   const playersMapped = [];
 
   const mapRanking = () => {
+    console.log(props.playersData);
     props.playersData.map((player) => {
         return playersMapped.push(player);
     })
