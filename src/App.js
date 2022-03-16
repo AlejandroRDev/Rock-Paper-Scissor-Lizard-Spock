@@ -24,7 +24,6 @@ function App() {
         wins: 0,
       };
       setPlayersData((prevPlayersData) => [newPlayer, ...prevPlayersData]);
-      console.log(playersData);
       setLoggedIn(true);
     }
   };

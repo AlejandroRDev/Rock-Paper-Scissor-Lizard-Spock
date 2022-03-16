@@ -36,7 +36,6 @@ const Game = (props) => {
   }
 
   const battle = (playerWeapon) => {
-    console.log(playerMove, machineMove);
     if (playerWeapon === options[machineChoice]) {
       props.updatePlayer();
       setWinner("It's a tie");
